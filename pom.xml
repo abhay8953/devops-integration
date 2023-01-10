@@ -44,9 +44,41 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			<plugin>
+   <groupId>com.spotify</groupId>
+   <artifactId>dockerfile-maven-plugin</artifactId>
+   <version>1.4.10</version>
+   <configuration>
+      <username>abhay100</username>
+      <password>Ichchha@123</password>
+      <repository>abhay100/${project.build.finalName}.jar</repository>
+      <tag>latest</tag>
+      <buildArgs>
+         <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+      </buildArgs>
+   </configuration>
+   <executions>
+      <execution>
+         <phase>install</phase>
+         <id>tag-version</id>
+         <goals>
+            <goal>build</goal>
+            <goal>push</goal>
+         </goals>
+      </execution>
+   </executions>
+</plugin>
+	
+			
 		</plugins>
+		
+		<finalName>devopsintegration</finalName>
+		
 	</build>
-	<repositories>
+	
+	
+<!-- 	<repositories>
 		<repository>
 			<id>spring-milestones</id>
 			<name>Spring Milestones</name>
@@ -81,7 +113,8 @@
 				<enabled>false</enabled>
 			</releases>
 		</pluginRepository>
-	</pluginRepositories>
+	</pluginRepositories> -->
+	
 	
 	
 
